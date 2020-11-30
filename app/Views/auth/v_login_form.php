@@ -1,4 +1,4 @@
-<?= $this->extend('v_template') ?>
+<?= $this->extend('layouts/v_template') ?>
 
 <?= $this->section('content') ?>
 <div class="container">
@@ -9,7 +9,7 @@
             <?php if(session()->getFlashdata('msg')):?>
                 <div class="alert alert-danger"><?= session()->getFlashdata('msg') ?></div>
             <?php endif;?>
-            <form action="/login/auth" method="post">
+            <form action="/auth/login" method="post">
                 <div class="mb-3">
                     <label for="InputForUsername" class="form-label">Username</label>
                     <input type="username" name="username_field" class="form-control" id="InputForUsername">

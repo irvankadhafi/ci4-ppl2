@@ -1,4 +1,4 @@
-<?= $this->extend('v_template') ?>
+<?= $this->extend('layouts/v_template') ?>
 <?= $this->section('content') ?>
 <div class="mt-3">
     <h4 class="text-center">Form Tambah Mahasiswa</h4>

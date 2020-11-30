@@ -10,18 +10,12 @@ class MahasiswaController extends BaseController
     {
         $this->mhsModel = new MahasiswaModel();
     }
-
-    public function homeMahasiswa()
-    {
-        return view('v_home');
-    }
     public function listMahasiswa()
     {
         $getPage = $this->request->getVar('page');
         $jlhTampil = 3;
         $page = isset($getPage)? (int)$getPage:1;
         $mulai = ($page>1) ? ($page * $jlhTampil) - $jlhTampil : 0;
-        // $kunci ="ir";
         $kunci = $this->request->getVar('keyword');
         $total = $this->mhsModel->totalData($kunci);
 
@@ -30,25 +24,23 @@ class MahasiswaController extends BaseController
             'mahasiswa' => $this->mhsModel->paging($kunci,$mulai,$jlhTampil),
             'pager' => ceil($total/$jlhTampil)
         ];
-        return view('v_mahasiswa_display',$data);
+        return view('mahasiswa/v_mahasiswa_display',$data);
     }
 
     public function cariMahasiswa()
     {
-        $pager = \Config\Services::pager();
-        $session = session();
         $kunci = $this->request->getVar('keyword');
         $mahasiswa = $this->mhsModel->pencarianData($kunci);
         $data = [
             'title' => 'Tugas Nomor 3',
             'mahasiswa' => $this->mhsModel->pencarianData($kunci),
         ];
-        return view('v_mahasiswa_search',$data);
+        return view('mahasiswa/v_mahasiswa_search',$data);
     }
 
     public function createMahasiswa()
     {
-        return view('v_mahasiswa_input');
+        return view('mahasiswa/v_mahasiswa_input');
     }
 
     public function insertorUpdateMahasiswa()
@@ -71,7 +63,7 @@ class MahasiswaController extends BaseController
             'title' => 'Tugas Nomor 3',
             'mahasiswa' => $this->mhsModel->detailData($kunci),
         ];
-        return view('v_mahasiswa_detail',$data);
+        return view('mahasiswa/v_mahasiswa_detail',$data);
     }
 
     public function deleteMahasiswa($seg1 = false)
@@ -86,6 +78,6 @@ class MahasiswaController extends BaseController
             'title' => 'Edit Mahasiswa',
             'mahasiswa' => $this->mhsModel->detailData($seg1),
         ];
-        return view('v_mahasiswa_edit',$data);
+        return view('mahasiswa/v_mahasiswa_edit',$data);
     }
 }

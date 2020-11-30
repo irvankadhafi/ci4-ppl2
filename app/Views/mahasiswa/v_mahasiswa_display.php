@@ -1,4 +1,4 @@
-<?= $this->extend('v_template') ?>
+<?= $this->extend('layouts/v_template') ?>
 
 <?= $this->section('content') ?>
 <form method="GET" action="" class="form-inline my-3">
@@ -15,7 +15,7 @@
             <a href="/mahasiswa/create">
                 <span type="submit" class="btn btn-success my-2 mx-5">Tambah Mahasiswa</span>
             </a>
-            <a href="/logout">
+            <a href="/auth/logout">
                 <span type="submit" class="btn btn-danger mr-0">Logout</span>
             </a>
 </form>
@@ -49,9 +49,12 @@
     <div class="text-center">
         <?php
             $url = (isset($_GET['keyword']) ? "?keyword=".$_GET['keyword']."&page=" : '?page=');
+            $pageNum = (isset($_GET['page']) ? $_GET['page']:'0');
             for ($i=1; $i<=$pager ; $i++){
         ?>
-                <a href="<?php echo $url.$i; ?>"><?php echo $i; ?></a>
+                <a href="<?php echo $url.$i; ?>" class="btn btn-sm btn-success <?php echo ($pageNum==$i) ? 'active':''?>">
+                    <?php echo $i; ?>
+                </a>
         <?php
             }
         ?>

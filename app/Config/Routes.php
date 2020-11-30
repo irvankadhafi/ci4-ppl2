@@ -33,21 +33,27 @@ $routes->setAutoRoute(true);
 //$routes->get('latihan1','LatihanController::getLatihanSatu');
 //$routes->get('latihan2','LatihanController::getLatihanDua');
 // $routes->get('mahasiswa/test/(:any)','MahasiswaController::listMahasiswa/$1', ['as' => 'mhs_index']);
-$routes->get('mahasiswa/test','MahasiswaController::listMahasiswa');
-$routes->get('/', 'MahasiswaController::homeMahasiswa',['filter' => 'auth']);
+
+$routes->get('/', 'HomeController::index',['filter' => 'auth']);
 $routes->group('mahasiswa', ['filter' => 'auth'], function($routes)
 {
-    $routes->get('/','MahasiswaController::cariMahasiswa');
+    // $routes->get('/','MahasiswaController::cariMahasiswa');
+    $routes->get('/','MahasiswaController::listMahasiswa');
     $routes->get('create','MahasiswaController::createMahasiswa');
     $routes->post('store','MahasiswaController::insertorUpdateMahasiswa', ['as' => 'mhs_store']);
     $routes->get('detail/(:any)', 'MahasiswaController::detailMahasiswa/$1');
     $routes->get('edit/(:any)', 'MahasiswaController::editMahasiswa/$1');
     $routes->get('delete/(:any)', 'MahasiswaController::deleteMahasiswa/$1');
 });
+$routes->get('/signup','RegisterController::index');
+$routes->get('/signin','LoginController::index');
+$routes->group('auth', function($routes)
+{
+    $routes->post('register','RegisterController::save');
+    $routes->post('login','LoginController::auth');
+    $routes->get('logout','LoginController::logout');
+});
 
-$routes->get('login','LoginController::index');
-$routes->post('login/auth','LoginController::auth');
-$routes->get('logout','LoginController::logout');
 
 
 /**

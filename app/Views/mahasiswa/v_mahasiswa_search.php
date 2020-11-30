@@ -1,4 +1,4 @@
-<?= $this->extend('v_template') ?>
+<?= $this->extend('layouts/v_template') ?>
 <?= $this->section('content') ?>
     <div class="container">
         <form method="GET" action="" class="form-inline my-3">

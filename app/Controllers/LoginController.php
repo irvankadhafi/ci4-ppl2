@@ -13,7 +13,7 @@ class LoginController extends BaseController
     public function index()
     {
         helper(['form']);
-        echo view('v_login_form');
+        echo view('auth/v_login_form');
     }
 
     public function auth()
@@ -41,17 +41,17 @@ class LoginController extends BaseController
                 return redirect()->to('/mahasiswa');
             }else{
                 $session->setFlashdata('msg', 'Wrong Password');
-                return redirect()->to('/login');
+                return redirect()->to('/auth');
             }
         }else{
             $session->setFlashdata('msg', 'User not Found');
-            return redirect()->to('/login');
+            return redirect()->to('/auth');
         }
     }
     public function logout()
     {
         $session = session();
         $session->destroy();
-        return redirect()->to('/login');
+        return redirect()->to('/auth');
     }
 }

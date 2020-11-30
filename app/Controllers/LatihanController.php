@@ -15,7 +15,7 @@ class LatihanController extends BaseController
         $data = [
             'nama' => 'Irvan Kadhafi'
         ];
-        return view('v_latihan1_display', $data);
+        return view('latihan/v_latihan1_display', $data);
     }
     public function getLatihanDua()
     {
@@ -64,7 +64,7 @@ class LatihanController extends BaseController
         $data = [
             'table' => $table->generate()
         ];
-        return view('v_latihan2_display',$data);
+        return view('latihan/v_latihan2_display',$data);
 //        echo $table->generate();
     }
 }
