@@ -1,13 +1,24 @@
 <?= $this->extend('v_template') ?>
 
 <?= $this->section('content') ?>
-<a href="/mahasiswa/create">
-    <span type="submit" class="btn btn-primary my-2 mx-5">Tambah Mahasiswa</span>
-</a>
-
-<a href="/mahasiswa/cari">
-    <span type="submit" class="btn btn-success my-2 mx-5">Cari Mahasiswa</span>
-</a>
+<form method="GET" action="" class="form-inline my-3">
+            <div class="form-group mr-2">
+                <label for="exampleInputEmail1" class="mr-3">Pencarian</label>
+                <input type="text" class="form-control" name="keyword" placeholder="Mencari Data Berdasarkan Nama">
+            </div>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary mx-2">Submit</button>
+                <a href="/mahasiswa">
+                <span type="submit" class="btn btn-danger">Cari Ulang</span>
+            </a>
+            </div>
+            <a href="/mahasiswa/create">
+                <span type="submit" class="btn btn-success my-2 mx-5">Tambah Mahasiswa</span>
+            </a>
+            <a href="/logout">
+                <span type="submit" class="btn btn-danger mr-0">Logout</span>
+            </a>
+</form>
 <div class="table-responsive">
     <table class="table table-bordered" style="width:90%;margin: auto; margin-bottom: 20px">
         <tr class="bg-primary text-light">
@@ -37,9 +48,19 @@
     </table>
     <div class="text-center">
         <?php
+            $base_url = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 'https' : 'http' ) . '://' .  $_SERVER['HTTP_HOST'];
+            $url = $base_url . $_SERVER["REQUEST_URI"];
+            $query = parse_url($url, PHP_URL_QUERY);
+            // Returns a string if the URL has parameters or NULL if not
+            if ($query) {
+                $url .= '&halaman=';
+            } else {
+                $url .= '?halaman=';
+            }
+            
             for ($i=1; $i<=$pager ; $i++){
         ?>
-                <a href="?halaman=<?php echo $i; ?>"><?php echo $i; ?></a>
+                <a href="<?php echo $url.$i; ?>"><?php echo $i; ?></a>
         <?php
             }
         ?>

@@ -21,7 +21,8 @@ class MahasiswaController extends BaseController
         $jlhTampil = 3;
         $page = isset($getPage)? (int)$getPage:1;
         $mulai = ($page>1) ? ($page * $jlhTampil) - $jlhTampil : 0;
-        $kunci ="irvan";
+        // $kunci ="ir";
+        $kunci = $this->request->getVar('keyword');
         $total = $this->mhsModel->totalData($kunci);
 
         $data = [
@@ -36,7 +37,7 @@ class MahasiswaController extends BaseController
     {
         $pager = \Config\Services::pager();
         $session = session();
-        $kunci = $this->request->getVar('cari');
+        $kunci = $this->request->getVar('keyword');
         $mahasiswa = $this->mhsModel->pencarianData($kunci);
         $data = [
             'title' => 'Tugas Nomor 3',

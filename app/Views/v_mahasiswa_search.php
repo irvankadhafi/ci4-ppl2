@@ -4,7 +4,7 @@
         <form method="GET" action="" class="form-inline my-3">
             <div class="form-group mr-2">
                 <label for="exampleInputEmail1" class="mr-3">Pencarian</label>
-                <input type="text" class="form-control" name="cari" placeholder="Mencari Data Berdasarkan Nama">
+                <input type="text" class="form-control" name="keyword" placeholder="Mencari Data Berdasarkan Nama">
             </div>
             <div class="input-group-append">
                 <button type="submit" class="btn btn-primary mx-2">Submit</button>
