@@ -48,16 +48,7 @@
     </table>
     <div class="text-center">
         <?php
-            $base_url = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 'https' : 'http' ) . '://' .  $_SERVER['HTTP_HOST'];
-            $url = $base_url . $_SERVER["REQUEST_URI"];
-            $query = parse_url($url, PHP_URL_QUERY);
-            // Returns a string if the URL has parameters or NULL if not
-            if ($query) {
-                $url .= '&halaman=';
-            } else {
-                $url .= '?halaman=';
-            }
-            
+            $url = (isset($_GET['keyword']) ? "?keyword=".$_GET['keyword']."&page=" : '?page=');
             for ($i=1; $i<=$pager ; $i++){
         ?>
                 <a href="<?php echo $url.$i; ?>"><?php echo $i; ?></a>

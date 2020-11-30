@@ -32,7 +32,8 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 //$routes->get('latihan1','LatihanController::getLatihanSatu');
 //$routes->get('latihan2','LatihanController::getLatihanDua');
-$routes->get('mahasiswa/test','MahasiswaController::listMahasiswa', ['as' => 'mhs_index']);
+// $routes->get('mahasiswa/test/(:any)','MahasiswaController::listMahasiswa/$1', ['as' => 'mhs_index']);
+$routes->get('mahasiswa/test','MahasiswaController::listMahasiswa');
 $routes->get('/', 'MahasiswaController::homeMahasiswa',['filter' => 'auth']);
 $routes->group('mahasiswa', ['filter' => 'auth'], function($routes)
 {

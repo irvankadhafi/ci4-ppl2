@@ -17,7 +17,7 @@ class MahasiswaController extends BaseController
     }
     public function listMahasiswa()
     {
-        $getPage = $this->request->getVar('halaman');
+        $getPage = $this->request->getVar('page');
         $jlhTampil = 3;
         $page = isset($getPage)? (int)$getPage:1;
         $mulai = ($page>1) ? ($page * $jlhTampil) - $jlhTampil : 0;
