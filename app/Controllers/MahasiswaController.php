@@ -10,7 +10,7 @@ class MahasiswaController extends BaseController
     {
         $this->mhsModel = new MahasiswaModel();
     }
-    public function listMahasiswa()
+    public function index()
     {
         $getPage = $this->request->getVar('page');
         $jlhTampil = 3;
@@ -27,23 +27,23 @@ class MahasiswaController extends BaseController
         return view('mahasiswa/v_mahasiswa_display',$data);
     }
 
-    public function cariMahasiswa()
-    {
-        $kunci = $this->request->getVar('keyword');
-        $mahasiswa = $this->mhsModel->pencarianData($kunci);
-        $data = [
-            'title' => 'Tugas Nomor 3',
-            'mahasiswa' => $this->mhsModel->pencarianData($kunci),
-        ];
-        return view('mahasiswa/v_mahasiswa_search',$data);
-    }
+//    public function cariMahasiswa()
+//    {
+//        $kunci = $this->request->getVar('keyword');
+//        $mahasiswa = $this->mhsModel->pencarianData($kunci);
+//        $data = [
+//            'title' => 'Tugas Nomor 3',
+//            'mahasiswa' => $this->mhsModel->pencarianData($kunci),
+//        ];
+//        return view('mahasiswa/v_mahasiswa_search',$data);
+//    }
 
-    public function createMahasiswa()
+    public function create()
     {
         return view('mahasiswa/v_mahasiswa_input');
     }
 
-    public function insertorUpdateMahasiswa()
+    public function save()
     {
         $data =[
           'NIM'=>$this->request->getPost('nim'),
@@ -56,7 +56,7 @@ class MahasiswaController extends BaseController
         return redirect()->to(base_url('/mahasiswa') );
     }
 
-    public function detailMahasiswa($seg1 = false)
+    public function detail($seg1 = false)
     {
         $kunci = $seg1;
         $data = [
@@ -66,13 +66,14 @@ class MahasiswaController extends BaseController
         return view('mahasiswa/v_mahasiswa_detail',$data);
     }
 
-    public function deleteMahasiswa($seg1 = false)
+    public function delete($seg1 = false)
     {
         $this->mhsModel->deleteData($seg1);
-        return redirect()->to(base_url('/mahasiswa') );
+//        return redirect()->to(base_url('/mahasiswa') );
+        return redirect()->back();
     }
 
-    public function editMahasiswa($seg1 = false)
+    public function update($seg1 = false)
     {
         $data = [
             'title' => 'Edit Mahasiswa',

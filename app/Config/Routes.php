@@ -38,12 +38,12 @@ $routes->get('/', 'HomeController::index',['filter' => 'auth']);
 $routes->group('mahasiswa', ['filter' => 'auth'], function($routes)
 {
     // $routes->get('/','MahasiswaController::cariMahasiswa');
-    $routes->get('/','MahasiswaController::listMahasiswa');
-    $routes->get('create','MahasiswaController::createMahasiswa');
-    $routes->post('store','MahasiswaController::insertorUpdateMahasiswa', ['as' => 'mhs_store']);
-    $routes->get('detail/(:any)', 'MahasiswaController::detailMahasiswa/$1');
-    $routes->get('edit/(:any)', 'MahasiswaController::editMahasiswa/$1');
-    $routes->get('delete/(:any)', 'MahasiswaController::deleteMahasiswa/$1');
+    $routes->get('/','MahasiswaController::index');
+    $routes->get('create','MahasiswaController::create');
+    $routes->post('store','MahasiswaController::save', ['as' => 'mhs_store']);
+    $routes->get('detail/(:any)', 'MahasiswaController::detail/$1');
+    $routes->get('edit/(:any)', 'MahasiswaController::update/$1');
+    $routes->get('delete/(:any)', 'MahasiswaController::delete/$1');
 });
 $routes->get('/signup','RegisterController::index');
 $routes->get('/signin','LoginController::index');

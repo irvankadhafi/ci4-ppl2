@@ -6,13 +6,13 @@ class MahasiswaModel extends Model
 {
     protected $table = 'mahasiswa';
     protected $primaryKey = 'NIM';
-    public function getData()
-    {
-        $sql = 'SELECT * FROM '.$this->table;
-        $query = $this->db->query($sql);
-        $results = $query->getResult();
-        return $results;
-    }
+//    public function getData()
+//    {
+//        $sql = 'SELECT * FROM '.$this->table;
+//        $query = $this->db->query($sql);
+//        $results = $query->getResult();
+//        return $results;
+//    }
     public function totalData($kunci)
     {
         $sql = "SELECT * FROM ".$this->table." WHERE NM_MHS LIKE '%$kunci%'";
@@ -36,13 +36,13 @@ class MahasiswaModel extends Model
         $this->db->query("DELETE FROM mahasiswa WHERE NIM ='$nim'");
     }
 
-    public function pencarianData($kunci)
-    {
-        $sql = "SELECT * FROM ".$this->table." WHERE NM_MHS LIKE '%$kunci%'";
-        $query = $this->db->query($sql);
-        $results = $query->getResult('array');
-        return $results;
-    }
+//    public function pencarianData($kunci)
+//    {
+//        $sql = "SELECT * FROM ".$this->table." WHERE NM_MHS LIKE '%$kunci%'";
+//        $query = $this->db->query($sql);
+//        $results = $query->getResult('array');
+//        return $results;
+//    }
 
     public function detailData($kunci)
     {

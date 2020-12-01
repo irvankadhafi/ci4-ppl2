@@ -21,7 +21,7 @@
 </form>
 <div class="table-responsive">
     <table class="table table-bordered" style="width:90%;margin: auto; margin-bottom: 20px">
-        <tr class="bg-primary text-light">
+        <tr class="bg-primary-custom text-light">
             <th>NIM</th>
             <th>Nama Lengkap</th>
             <th>Kelas</th>

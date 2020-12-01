@@ -41,17 +41,17 @@ class LoginController extends BaseController
                 return redirect()->to('/mahasiswa');
             }else{
                 $session->setFlashdata('msg', 'Wrong Password');
-                return redirect()->to('/auth');
+                return redirect()->to('/signin');
             }
         }else{
             $session->setFlashdata('msg', 'User not Found');
-            return redirect()->to('/auth');
+            return redirect()->to('/signin');
         }
     }
     public function logout()
     {
         $session = session();
         $session->destroy();
-        return redirect()->to('/auth');
+        return redirect()->to('/signin');
     }
 }

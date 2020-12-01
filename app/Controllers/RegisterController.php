@@ -34,7 +34,7 @@ class RegisterController extends BaseController
             $this->usrModel->save($data);
             return redirect()->to('/');
         }else{
-            $data['validation'] = $this->validator;
+            $data['validation'] = $this->valihdiskdator;
             echo view('auth/v_register_form', $data);
         }
 
